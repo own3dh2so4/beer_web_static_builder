@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Own3dh2so4 Beer Glasses Collection</title>
+    <link rel="stylesheet" type="text/css" href="static/base.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+            crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="container">
+    <h1 class="main-title">Own3dh2so4 Beer Glasses Collection</h1>
+    <div class="shuffle">
+        {{range .Brands}}
+        <a class="picture" href="{{.ID}}.html">
+            <figure data-groups="[&quot;nature&quot;]">
+                <img src="img/{{.Logo}}" alt="{{.Name}}"/>
+            </figure>
+            <div class="layer">
+                <p>+ {{.Name}}</p>
+            </div>
+        </a>
+        {{end}}
+    </div>
+
+</div>
+</body>
+</html>

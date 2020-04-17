@@ -1,0 +1,135 @@
+/* Generics */
+body {
+    background: url("background.jpeg") no-repeat center center #000;
+    background-size: cover;
+    color: #333;
+    font-family: 'Inconsolata', monospace;
+    margin: 0;
+}
+
+img {
+    width: 100%;
+    object-fit: contain;
+}
+
+a {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+iframe {
+    width: 100%;
+    height: 100%;
+}
+
+/* Styles */
+body .container {
+    padding: 32px;
+    margin: 0 auto;
+    max-width: 1280px;
+    display: grid;
+    grid-gap: 20px;
+    grid-template-areas: "header" "nav" "brewery-info" "brewery-map" "glass-info" "glass-map" "go-back";
+}
+
+.main-head {
+    margin: auto;
+    max-width: 300px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    grid-area: header;
+}
+
+.brewery-info {
+    grid-area: brewery-info;
+    padding: 10px;
+}
+
+.glass-info {
+    grid-area: glass-info;
+    padding: 10px;
+}
+
+.main-nav {
+    grid-area: nav;
+    display: grid;
+    grid-gap: 5px;
+    grid-template-rows: 2fr 0.25fr;
+    grid-template-areas: "glass-photo" "glass-selector";
+}
+
+.glass-photo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 500px;
+    min-width: 200px;
+    grid-area: glass-photo;
+    overflow: hidden;
+    margin: 10px;
+}
+
+.glass-selector {
+    grid-area: glass-selector;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(50px, 130px));
+    justify-content: center;
+    align-items: center;
+    grid-gap: 3px;
+    justify-items: center;
+}
+
+.circle {
+    width: 44px;
+    height: 44px;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    background: rgba(0, 200, 228);
+    text-align: center;
+}
+
+.circle-selected {
+    background: rgba(37, 40, 80);
+}
+
+.brewery-map {
+    grid-area: brewery-map;
+}
+
+.glass-map {
+    grid-area: glass-map;
+}
+
+.go-back {
+    margin: 10px;
+    grid-area: go-back;
+}
+
+i {
+    border: solid rgba(220, 220, 220, 0.9);
+    border-width: 0 10px 10px 0;
+    display: inline-block;
+    padding: 10px;
+    min-height: 20px;
+    min-width: 20px;
+}
+
+.left {
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+}
+
+.background-color {
+    background: rgba(220, 220, 220, 0.9);
+}
+
+
+@media (min-width: 1300px) {
+    body .container {
+        grid-template-columns: 1.5fr 2fr 2fr;
+        grid-template-areas: "header header  header"
+        "nav    brewery-info brewery-map" "nav    glass-info glass-map" "go-back go-back go-back";
+    }
+}

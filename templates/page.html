@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Own3dh2so4 Beer Glasses Collection</title>
+    <link rel="stylesheet" type="text/css" href="static/page.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <header class="main-head">
+        <img id="name-imagen" src="img/{{.NameImage}}" alt="{{.Name}}" class="{{ if .BackgroundLogo }}background-color {{end}}"/>
+    </header>
+    <div class="main-nav background-color">
+        <figure class="glass-photo">
+            <img id="glass-imagen" src="img/{{(index .Glasses 0).Photo}}" alt="{{.ID}}"/>
+        </figure>
+        {{ if gt (len .Glasses) 1 }}
+            <div class="glass-selector">
+                {{ range .Glasses }}
+                    <a href="#" onclick="{{.FunctionName}}()" id="{{.ID}}" class="glass-option circle"></a>
+                {{ end }}
+            </div>
+        {{ end }}
+    </div>
+    <article class="brewery-info background-color">
+        <h1>Brewery</h1>
+        <p><b>Name:</b> <text>{{.Name}}</text></p>
+        <p><b>City:</b> <text>{{.FromCity}}</text></p>
+        <p><b>Country:</b> <text>{{.FromCountry}}</text></p>
+        <p><b>Website:</b> <a href="{{.Website}}" target="_blank">{{.Website}}</a></p>
+    </article>
+
+    <article class="glass-info background-color">
+        <h1>Glass</h1>
+        <p><b>Name:</b> <text id="glass-name">{{(index .Glasses 0).Name}}</text></p>
+        <p><b>Bought City:</b> <text id="glass-city">{{(index .Glasses 0).BoughtCity}}</text></p>
+        <p><b>Bought Country:</b> <text id="glass-county">{{(index .Glasses 0).BoughtCountry}}</text></p>
+        <p><b>Got:</b> <text id="glass-got">{{(index .Glasses 0).Got}}</text></p>
+    </article>
+    <div class="brewery-map background-color">
+        <iframe src="{{.Map}}" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+    </div>
+    <div class="glass-map background-color">
+        <iframe id="glass-map" src="{{(index .Glasses 0).Map}}" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+    </div>
+    <div class="go-back">
+        <a href="index.html"><i class="left"></i></a>
+    </div>
+</div>
+</body>
+<script>
+
+    $('.circle').first().addClass('circle-selected');
+
+    {{ range .Glasses }}
+
+    function {{.FunctionName}}() {
+        $('.circle-selected').removeClass('circle-selected');
+        $('#{{.ID}}').addClass('circle-selected');
+        let glass_image = $('#glass-imagen');
+        glass_image.attr('src', 'img/{{.Photo}}');
+        glass_image.attr('alt', '{{.ID}}');
+        $('#glass-name').text('{{.Name}}');
+        $('#glass-city').text('{{.BoughtCity}}');
+        $('#glass-county').text('{{.BoughtCountry}}');
+        $('#glass-got').text('{{.Got}}');
+        $('#glass-map').attr('src', '{{.Map}}');
+    }
+    {{ end }}
+</script>
+</html>
